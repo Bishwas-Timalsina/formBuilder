@@ -13,10 +13,6 @@ const DropItemRender = (props: any) => {
           <StyledContainer>
             <div className="title">
               <p>{container.name}</p>
-              <div className="flex flex-row justify-start items-center">
-                <PiDotsSixVerticalBold className="text-[28px] font-[700] text-black" />
-                <IoTrash className="text-[28px] font-[700] text-black" />
-              </div>
             </div>
             <div className="placeHolder" style={container.style}>
               {container.label}
@@ -29,10 +25,6 @@ const DropItemRender = (props: any) => {
         <StyledContainer>
           <div className="title">
             <p>{container.name}</p>
-            <div className="flex flex-row justify-start items-center">
-              <PiDotsSixVerticalBold className="text-[28px] font-[700] text-black" />
-              <IoTrash className="text-[28px] font-[700] text-black" />
-            </div>
           </div>
 
           <div
@@ -48,10 +40,6 @@ const DropItemRender = (props: any) => {
             <StyledContainer>
               <div className="title">
                 <p>{container.name}</p>
-                <div className="flex flex-row justify-start items-center">
-                  <PiDotsSixVerticalBold className="text-[28px] font-[700] text-black" />
-                  <IoTrash className="text-[28px] font-[700] text-black" />
-                </div>
               </div>
               <div className="inputField">
                 <div className="placeHolder">{container.placeholder ?? ""}</div>
@@ -63,10 +51,6 @@ const DropItemRender = (props: any) => {
             <StyledContainer>
               <div className="title">
                 <p>{container.name}</p>
-                <div className="flex flex-row justify-start items-center">
-                  <PiDotsSixVerticalBold className="text-[28px] font-[700] text-black" />
-                  <IoTrash className="text-[28px] font-[700] text-black" />
-                </div>
               </div>
               <div className="inputField">
                 <div className="placeHolder">{container.placeholder ?? ""}</div>
@@ -79,10 +63,6 @@ const DropItemRender = (props: any) => {
             <StyledContainer>
               <div className="title">
                 <p>{container.name}</p>
-                <div className="flex flex-row justify-start items-center">
-                  <PiDotsSixVerticalBold className="text-[28px] font-[700] text-black" />
-                  <IoTrash className="text-[28px] font-[700] text-black" />
-                </div>
               </div>
               <div className="inputField">
                 <div className="placeHolder">{container.placeholder ?? ""}</div>
@@ -100,10 +80,6 @@ const DropItemRender = (props: any) => {
         <StyledContainer>
           <div className="title">
             <p>{container.name}</p>
-            <div className="flex flex-row justify-start items-center">
-              <PiDotsSixVerticalBold className="text-[28px] font-[700] text-black" />
-              <IoTrash className="text-[28px] font-[700] text-black" />
-            </div>
           </div>
           <div className="placeHolder">{container.placeHolder ?? ""}</div>
         </StyledContainer>
@@ -113,10 +89,6 @@ const DropItemRender = (props: any) => {
         <StyledContainer>
           <div className="title">
             <p>{container.name}</p>
-            <div className="flex flex-row justify-start items-center">
-              <PiDotsSixVerticalBold className="text-[28px] font-[700] text-black" />
-              <IoTrash className="text-[28px] font-[700] text-black" />
-            </div>
           </div>
           <div className="inputField h-[200px]">
             <div className="placeHolder">{container.placeholder ?? ""}</div>

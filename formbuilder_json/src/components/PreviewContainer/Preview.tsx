@@ -24,6 +24,7 @@ const Preview = () => {
     if (response?.status === 200) {
       setModalOpen(true);
       const data = response?.data;
+      console.log(data?.iframe);
       setIframe(data?.iFrame);
     }
   };
@@ -60,7 +61,9 @@ const Preview = () => {
       >
         <div className="flex flex-col justify-center items-center px-4 py-2">
           <div className="flex flex-row justify-between items-center w-[100%]">
-            <p className="text-center font-[500] text-[16px] w-[100%]">Copy the code to use in your website</p>
+            <p className="text-center font-[500] text-[16px] w-[100%]">
+              Copy the code to use in your website
+            </p>
             <div onClick={() => setModalOpen(false)}>
               <IoClose className="text-[18px] font-[600]" />
             </div>
@@ -68,6 +71,7 @@ const Preview = () => {
           <input
             contentEditable={false}
             value={iFrame}
+            disabled
             className="w-[100%] px-4 py-4 border border-[black] rounded-md mx-1 my-4"
           />
         </div>

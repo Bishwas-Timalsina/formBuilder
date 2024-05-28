@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useDrop } from "react-dnd";
 import DropItemRender from "./DropItemRender";
-import { IoAdd } from "react-icons/io5";
+import { IoAdd, IoTrash } from "react-icons/io5";
 import { FormContext } from "../../context/Form";
 import { generateID } from "../../utils/generateID";
+import { PiDotsSixVerticalBold } from "react-icons/pi";
 
 const DropContainer = (props: any) => {
   const { setEditField } = props;
@@ -47,6 +48,18 @@ const DropContainer = (props: any) => {
       setDroppedContainer(JSON.parse(savedContainer));
     }
   }, [setDroppedContainer]);
+
+  const removeField = (id: number) => {
+    const droppedContainer = JSON.parse(
+      localStorage.getItem("droppedContainer") as any
+    );
+    const updatedContainer = droppedContainer.filter(
+      (item: any) => item?.id !== id
+    );
+    console.log({ droppedContainer });
+    setDroppedContainer(updatedContainer);
+    localStorage.setItem("droppedContainer", JSON.stringify(updatedContainer));
+  };
   return (
     <>
       <div className="flex flex-col justify-start items-start mt-2 gap-4">
@@ -73,15 +86,29 @@ const DropContainer = (props: any) => {
           <div className="flex flex-col justify-center items-center w-[100%] gap-2 ">
             {droppedContainer.length > 0 &&
               droppedContainer?.map((container: any, index: number) => (
-                <>
+                <div
+                  key={index}
+                  className="w-[100%] border-[black] hover:border-[#51d171] border rounded-md hover:border-[2px] cursor-pointer grid grid-cols-12 justify-center items-center"
+                >
                   <div
-                    key={index}
-                    className="w-[100%] border-[black] hover:border-[#51d171] border rounded-md hover:border-[2px] cursor-pointer"
+                    className="col-span-11"
                     onClick={() => handleFieldClick(container)}
                   >
                     <DropItemRender container={container} />
                   </div>
-                </>
+
+                  <div
+                    onClick={() => removeField(container?.id)}
+                    className="col-span-1 flex flex-col justify-start items-center gap-4"
+                  >
+                    <button className="hover:bg-[#5e5d5d] p-1 rounded-md hover:text-white text-[28px] font-[700] text-[black]">
+                      <PiDotsSixVerticalBold />
+                    </button>
+                    <button className="hover:bg-[#fa6161] p-1 rounded-md hover:text-white text-[28px] font-[700] text-[#fa6161]">
+                      <IoTrash />
+                    </button>
+                  </div>
+                </div>
               ))}
 
             <div className="flex flex-col justify-center items-center w-[100%] bg-red-100 px-2 py-8">

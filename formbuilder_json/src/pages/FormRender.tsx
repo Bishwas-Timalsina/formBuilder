@@ -1,6 +1,9 @@
 import Header from "../components/FormRender/Header";
 import Divider from "../components/FormRender/Divider";
 import Input from "../components/FormRender/Input";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const formFields = [
   {
@@ -53,22 +56,34 @@ const formFields = [
 ];
 
 const FormRender = () => {
+  const [formField, setFormField] = useState<any>([]);
+  const [formName, setFormName] = useState<any>("");
+  const { id } = useParams();
+  useEffect(() => {
+    fetchFormData(id as string);
+    console.log("Hello");
+  }, [id]);
+  const fetchFormData = async (id: string) => {
+    const response = await axios.get(`http://localhost:8000/api/v1/form/${id}`);
+    const formField = response?.data?.formData;
+    setFormField(formField?.formData);
+    setFormName(formField?.formName);
+  };
+
   return (
     <>
       <div className="flex flex-col justify-start items-center gap-2">
         <p className="text-[22px] font-[500] underline">Generated Form</p>
 
         <div className="w-[50%] flex flex-col justify-start items-center border-[2px] border-[#113342] rounded-md px-2 py-3">
-          <p className="text-[22px] font-[500] text-[#585858]">
-            Form Name Goes Here
-          </p>
+          <p className="text-[22px] font-[500] text-[#585858]">{formName}</p>
           <form
             action=""
             className="flex flex-col justify-start items-start w-[70%]"
           >
             <div className="flex flex-col w-[100%] gap-3">
-              {formFields &&
-                formFields?.map((formField: any) => {
+              {formField &&
+                formField?.map((formField: any) => {
                   switch (formField?.type) {
                     case "input":
                       return <Input formField={formField} />;

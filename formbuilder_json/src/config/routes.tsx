@@ -3,6 +3,7 @@ import { IndexLayout } from "../layout/IndexLayout";
 import FormBuilder from "../pages/FormBuilder";
 import SavedForm from "../pages/SavedForm";
 import FormRender from "../pages/FormRender";
+import GeneratedForm from "../pages/GeneratedForm";
 
 const routes: RouteObject[] = [
   {
@@ -23,5 +24,9 @@ const routes: RouteObject[] = [
     path: "/form/:id",
     element: <FormRender />,
   },
+  {
+    path:'generate',
+    element:<GeneratedForm/>
+  }
 ];
 export default routes;

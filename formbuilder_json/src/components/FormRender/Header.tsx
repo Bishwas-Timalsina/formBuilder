@@ -6,7 +6,9 @@ const Header = (props: any) => {
   return (
     <>
       <div className="w-[100%]" style={formField.stlye}>
-        <p className="text-[18px] text-center">{formField.name}</p>
+        <p className="text-[18px] text-center" style={formField?.style}>
+          {formField.label}
+        </p>
       </div>
     </>
   );
